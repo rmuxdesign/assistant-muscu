@@ -1,0 +1,204 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "name": "Pompes",
+      "bodyPart": ["haut", "full"],
+      "description": "Mains largeur épaules, coudes le long du corps. Descendez jusqu'au sol.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 2,
+      "name": "Pompes lentes",
+      "bodyPart": ["haut", "full"],
+      "description": "Descendez en 3s et remontez en 3s. Coudes le long des côtes.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 3,
+      "name": "Ring Row",
+      "bodyPart": ["haut", "full"],
+      "description": "Tirage horizontal. Amenez les anneaux à la poitrine. Contrôle total.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 4,
+      "name": "Dips aux anneaux",
+      "bodyPart": ["haut", "full"],
+      "description": "Épaules sous les coudes. Gardez les anneaux proches du corps.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "difficile"
+    },
+    {
+      "id": 5,
+      "name": "Ring Biceps Curl",
+      "bodyPart": ["haut", "full"],
+      "description": "Coudes fixes. Amenez les anneaux vers votre front.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 6,
+      "name": "Ring Face Pull",
+      "bodyPart": ["haut", "full"],
+      "description": "Tirez vers le visage en ouvrant les coudes vers l'extérieur.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 7,
+      "name": "Pompes hindoues",
+      "bodyPart": ["haut", "full"],
+      "description": "Plongez au ras du sol puis redressez le buste vers le ciel.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 8,
+      "name": "Table Row",
+      "bodyPart": ["haut", "full"],
+      "description": "Tirage horizontal sous une table solide.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 9,
+      "name": "Plank",
+      "bodyPart": ["milieu", "full"],
+      "description": "Restez en position avant-bras, dos plat, sangle abdominale contractée.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 10,
+      "name": "Hollow hold",
+      "bodyPart": ["milieu", "full"],
+      "description": "Dos plaqué au sol. Décollez les épaules et les jambes tendues.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 11,
+      "name": "Crunch",
+      "bodyPart": ["milieu", "full"],
+      "description": "Allongé sur le dos, fléchissez l'abdomen vers les genoux.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 12,
+      "name": "Leg Raises",
+      "bodyPart": ["milieu", "bas", "full"],
+      "description": "Allongé, levez les jambes tendues jusqu'à la verticale.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 13,
+      "name": "Squats",
+      "bodyPart": ["bas", "full"],
+      "description": "Pieds largeur épaules, descendez jusqu'à ce que les cuisses soient parallèles.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 14,
+      "name": "Fentes",
+      "bodyPart": ["bas", "full"],
+      "description": "Avancez une jambe et fléchissez jusqu'à 90°. Alternez les jambes.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 15,
+      "name": "Soulevé de terre",
+      "bodyPart": ["bas", "full"],
+      "description": "Jambes tendues, basculez le buste vers l'avant. Dos plat.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 16,
+      "name": "Calf Raises",
+      "bodyPart": ["bas", "full"],
+      "description": "Montez sur les orteils en contractant les mollets.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 17,
+      "name": "Activation scapulaire",
+      "bodyPart": ["haut", "full"],
+      "description": "Bras tendus. Suspendez-vous et initiez le mouvement uniquement avec les épaules.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 18,
+      "name": "Shoulder taps",
+      "bodyPart": ["haut", "full"],
+      "description": "En planche, touchez l'épaule opposée sans bouger le bassin.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 19,
+      "name": "Superman hold",
+      "bodyPart": ["bas", "milieu", "full"],
+      "description": "Sur le ventre, décollez poitrine et cuisses du sol.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 20,
+      "name": "Pompes tempo",
+      "bodyPart": ["haut", "full"],
+      "description": "4s de descente, 1s de pause, remontée explosive.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 21,
+      "name": "Biceps iso",
+      "bodyPart": ["haut", "full"],
+      "description": "Coudes à 90° sous la table, poussez vers le haut.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 22,
+      "name": "Plank Push-up",
+      "bodyPart": ["haut", "milieu", "full"],
+      "description": "Alternez position avant-bras et position mains.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "moyen"
+    },
+    {
+      "id": 23,
+      "name": "Band Pull-Apart",
+      "bodyPart": ["haut", "full"],
+      "description": "Écartez l'élastique jusqu'à la poitrine en pinçant les omoplates.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 24,
+      "name": "Rotations externes",
+      "bodyPart": ["haut", "full"],
+      "description": "Coude au flanc à 90°, pivotez l'avant-bras vers l'extérieur.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "facile"
+    },
+    {
+      "id": 25,
+      "name": "Ring Plank to Pike",
+      "bodyPart": ["haut", "milieu", "full"],
+      "description": "Pieds dans les anneaux, montez les fesses vers le ciel.",
+      "img": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+      "difficulty": "difficile"
+    }
+  ]
+}
