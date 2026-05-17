@@ -4,165 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Assistant Muscu Pro</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #f8fafc;
-            --accent: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Empêche le scroll global */
-            padding: 10px;
-        }
-        .container {
-            width: 100%;
-            max-width: 450px;
-            height: 95vh;
-            background: var(--card);
-            padding: 15px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        h1 { margin: 0 0 15px 0; font-size: 1.5rem; text-align: center; }
-        
-        /* Masquer le H1 quand la séance commence */
-        .workout-active h1 { display: none; }
-
-        #setup-zone { 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            flex-grow: 1; 
-        }
-
-        #workout-zone {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: space-between;
-        }
-
-        .header-info { text-align: center; }
-        
-        #illustration-container {
-            flex-grow: 1;
-            min-height: 120px;
-            max-height: 180px;
-            margin: 8px 0;
-            background: #111827;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        #illustration-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        #timer-display {
-            font-size: 55px;
-            font-weight: 900;
-            margin: 5px 0;
-            text-align: center;
-            font-family: monospace;
-            line-height: 1;
-        }
-        
-        #description-text {
-            background: #0f172a;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #cbd5e1;
-            margin-bottom: 8px;
-            border-left: 3px solid var(--primary);
-            line-height: 1.3;
-        }
-
-        .phase-tag {
-            display: inline-block;
-            padding: 2px 10px;
-            background: #475569;
-            border-radius: 20px;
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-
-        select {
-            width: 100%;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 8px;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            background: #334155; 
-            color: white;
-        }
-
-        /* Classe de base unique pour TOUS les boutons du site */
-        .btn-main {
-            width: 100%;
-            padding: 12px;
-            margin: 5px 0;
-            border-radius: 8px;
-            border: none;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            color: white;
-            flex-shrink: 0; /* Sécurité anti-écrasement flexbox */
-            text-transform: uppercase; /* Uniformise le style du texte */
-        }
-        
-        /* Variations de couleurs uniquement */
-        .btn-primary { background: var(--primary); }
-        .btn-danger { background: var(--danger); }
-        
-        #controls {
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-        }
-        
-        .timer-work { color: var(--accent); }
-        .timer-rest { color: var(--warning); }
-        .timer-idle { color: #64748b; }
-        
-        .hidden { display: none !important; }
-        #wakelock-status { font-size: 10px; color: #64748b; text-align: center; margin-top: 5px; flex-shrink: 0; }
-
-        /* Écran de fin */
-        .finish-screen {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            gap: 15px;
-        }
-        .finish-screen h2 {
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -202,41 +44,41 @@
 <script>
 const data = {
     "ANNEAUX": [
-        { phase: "Échauffement", name: "Activation scapulaire", reps: "10 reps", series: 1, type: "reps", move: "pull", desc: "Bras tendus. Suspendez-vous et initiez le mouvement uniquement avec les omoplates.", img: "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Échauffement", name: "Pompes lentes", reps: "8 reps (3/3)", series: 1, type: "reps", move: "push", desc: "Descendez en 3s et remontez en 3s. Coudes le long des côtes.", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Échauffement", name: "Hollow hold", reps: "20 sec", series: 1, type: "time", duration: 20, move: "iso", desc: "Dos plaqué au sol. Décollez les épaules et les jambes tendues.", img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Ring Row", reps: "6-8 reps (3/3)", series: 4, type: "reps", move: "pull", desc: "Tirage horizontal. Amenez les anneaux à la poitrine. Contrôle total.", img: "https://images.unsplash.com/photo-1605296867304-46d5465a25f1?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Dips aux anneaux", reps: "4-6 reps", series: 4, type: "reps", move: "push", desc: "Épaules sous les coudes. Gardez les anneaux proches du corps.", img: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Ring Biceps Curl", reps: "8-10 reps", series: 3, type: "reps", move: "pull", desc: "Coudes fixes. Amenez les anneaux vers votre front.", img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Ring Face Pull", reps: "12-15 reps", series: 3, type: "reps", move: "pull", desc: "Tirez vers le visage en ouvrant les coudes vers l'extérieur.", img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Finisher", name: "Ring Plank to Pike", reps: "8-10 reps", series: 3, type: "reps", move: "push", desc: "Pieds dans les anneaux, montez les fesses vers le ciel.", img: "https://images.unsplash.com/photo-1566241477600-ac026ad43874?w=500&auto=format&fit=crop&q=60" }
+        { phase: "Échauffement", name: "Activation scapulaire", reps: "10 reps", series: 1, type: "reps", move: "pull", desc: "Bras tendus. Suspendez-vous et initiez le mouvement uniquement avec[...]
+        { phase: "Échauffement", name: "Pompes lentes", reps: "8 reps (3/3)", series: 1, type: "reps", move: "push", desc: "Descendez en 3s et remontez en 3s. Coudes le long des côtes.", img: "[...]
+        { phase: "Échauffement", name: "Hollow hold", reps: "20 sec", series: 1, type: "time", duration: 20, move: "iso", desc: "Dos plaqué au sol. Décollez les épaules et les jambes tendues.[...]
+        { phase: "Bloc Force", name: "Ring Row", reps: "6-8 reps (3/3)", series: 4, type: "reps", move: "pull", desc: "Tirage horizontal. Amenez les anneaux à la poitrine. Contrôle total.", img[...]
+        { phase: "Bloc Force", name: "Dips aux anneaux", reps: "4-6 reps", series: 4, type: "reps", move: "push", desc: "Épaules sous les coudes. Gardez les anneaux proches du corps.", img: "htt[...]
+        { phase: "Bloc Force", name: "Ring Biceps Curl", reps: "8-10 reps", series: 3, type: "reps", move: "pull", desc: "Coudes fixes. Amenez les anneaux vers votre front.", img: "https://images[...]
+        { phase: "Bloc Force", name: "Ring Face Pull", reps: "12-15 reps", series: 3, type: "reps", move: "pull", desc: "Tirez vers le visage en ouvrant les coudes vers l'extérieur.", img: "http[...]
+        { phase: "Finisher", name: "Ring Plank to Pike", reps: "8-10 reps", series: 3, type: "reps", move: "push", desc: "Pieds dans les anneaux, montez les fesses vers le ciel.", img: "https://i[...]
     ],
     "SANS MATÉRIEL": [
-        { phase: "Échauffement", name: "Shoulder taps", reps: "20 reps", series: 1, type: "reps", move: "lat", desc: "En planche, touchez l'épaule opposée sans bouger le bassin.", img: "https://drive.google.com/file/d/1jwVhMCmIjlgHspCHAHiWy7Y8AIp8XE6a/view?usp=drivesdk?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Échauffement", name: "Pompes serrées", reps: "10 reps", series: 1, type: "reps", move: "push", desc: "Mains largeur épaules, coudes collés au corps.", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Échauffement", name: "Superman hold", reps: "20 sec", series: 1, type: "time", duration: 20, move: "iso", desc: "Sur le ventre, décollez poitrine et cuisses du sol.", img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Pompes tempo", reps: "6-10 reps", series: 4, type: "reps", move: "push", desc: "4s de descente, 1s de pause, remontée explosive.", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Pompes hindoues", reps: "6-8 reps", series: 3, type: "reps", move: "push", desc: "Plongez au ras du sol puis redressez le buste vers le ciel.", img: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Table Row", reps: "4-6 reps", series: 4, type: "reps", move: "pull", desc: "Tirage horizontal sous une table solide.", img: "https://images.unsplash.com/photo-1605296867304-46d5465a25f1?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Biceps iso", reps: "20 sec", series: 3, type: "time", duration: 20, move: "iso", desc: "Coudes à 90° sous la table, poussez vers le haut.", img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Finisher", name: "Plank Push-up", reps: "20 sec", series: 3, type: "time", duration: 20, move: "push", desc: "Alternez position avant-bras et position mains.", img: "https://images.unsplash.com/photo-1566241477600-ac026ad43874?w=500&auto=format&fit=crop&q=60" }
+        { phase: "Échauffement", name: "Shoulder taps", reps: "20 reps", series: 1, type: "reps", move: "lat", desc: "En planche, touchez l'épaule opposée sans bouger le bassin.", img: "https:[...]
+        { phase: "Échauffement", name: "Pompes serrées", reps: "10 reps", series: 1, type: "reps", move: "push", desc: "Mains largeur épaules, coudes collés au corps.", img: "https://images.u[...]
+        { phase: "Échauffement", name: "Superman hold", reps: "20 sec", series: 1, type: "time", duration: 20, move: "iso", desc: "Sur le ventre, décollez poitrine et cuisses du sol.", img: "ht[...]
+        { phase: "Bloc Force", name: "Pompes tempo", reps: "6-10 reps", series: 4, type: "reps", move: "push", desc: "4s de descente, 1s de pause, remontée explosive.", img: "https://images.unsp[...]
+        { phase: "Bloc Force", name: "Pompes hindoues", reps: "6-8 reps", series: 3, type: "reps", move: "push", desc: "Plongez au ras du sol puis redressez le buste vers le ciel.", img: "https:/[...]
+        { phase: "Bloc Force", name: "Table Row", reps: "4-6 reps", series: 4, type: "reps", move: "pull", desc: "Tirage horizontal sous une table solide.", img: "https://images.unsplash.com/phot[...]
+        { phase: "Bloc Force", name: "Biceps iso", reps: "20 sec", series: 3, type: "time", duration: 20, move: "iso", desc: "Coudes à 90° sous la table, poussez vers le haut.", img: "https://i[...]
+        { phase: "Finisher", name: "Plank Push-up", reps: "20 sec", series: 3, type: "time", duration: 20, move: "push", desc: "Alternez position avant-bras et position mains.", img: "https://ima[...]
     ],
     "ÉLASTIQUES": [
-        { phase: "Échauffement", name: "Band Pull-Apart", reps: "20 reps", series: 1, type: "reps", move: "lat", desc: "Écartez l'élastique jusqu'à la poitrine en pinçant les omoplates.", img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Échauffement", name: "Rotations externes", reps: "12 / bras", series: 1, type: "reps", move: "lat", desc: "Coude au flanc à 90°, pivotez l'avant-bras vers l'extérieur.", img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Row lourd", reps: "8 reps", series: 4, type: "reps", move: "pull", desc: "Tirez les coudes vers l'arrière en contrôlant le retour.", img: "https://images.unsplash.com/photo-1605296867304-46d5465a25f1?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Développé", reps: "8 reps", series: 4, type: "reps", move: "push", desc: "Élastique dans le dos, poussez vers l'avant.", img: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Face Pull", reps: "12-15 reps", series: 3, type: "reps", move: "pull", desc: "Tirez vers le front en écartant les mains.", img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Curl", reps: "10-12 reps", series: 3, type: "reps", move: "pull", desc: "Debout sur l'élastique, fléchissez les coudes.", img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Finisher", name: "Triceps ext.", reps: "12 reps", series: 3, type: "reps", move: "push", desc: "Tendez les bras pour contracter les triceps.", img: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=500&auto=format&fit=crop&q=60" }
+        { phase: "Échauffement", name: "Band Pull-Apart", reps: "20 reps", series: 1, type: "reps", move: "lat", desc: "Écartez l'élastique jusqu'à la poitrine en pinçant les omoplates.", im[...]
+        { phase: "Échauffement", name: "Rotations externes", reps: "12 / bras", series: 1, type: "reps", move: "lat", desc: "Coude au flanc à 90°, pivotez l'avant-bras vers l'extérieur.", img[...]
+        { phase: "Bloc Force", name: "Row lourd", reps: "8 reps", series: 4, type: "reps", move: "pull", desc: "Tirez les coudes vers l'arrière en contrôlant le retour.", img: "https://images.u[...]
+        { phase: "Bloc Force", name: "Développé", reps: "8 reps", series: 4, type: "reps", move: "push", desc: "Élastique dans le dos, poussez vers l'avant.", img: "https://images.unsplash.com[...]
+        { phase: "Bloc Force", name: "Face Pull", reps: "12-15 reps", series: 3, type: "reps", move: "pull", desc: "Tirez vers le front en écartant les mains.", img: "https://images.unsplash.com[...]
+        { phase: "Bloc Force", name: "Curl", reps: "10-12 reps", series: 3, type: "reps", move: "pull", desc: "Debout sur l'élastique, fléchissez les coudes.", img: "https://images.unsplash.com[...]
+        { phase: "Finisher", name: "Triceps ext.", reps: "12 reps", series: 3, type: "reps", move: "push", desc: "Tendez les bras pour contracter les triceps.", img: "https://images.unsplash.com/[...]
     ],
     "ANNEAUX + ÉLASTIQUES": [
-        { phase: "Échauffement", name: "Band Pull-Apart", reps: "20 reps", series: 1, type: "reps", move: "lat", desc: "Bras tendus, écartez l'élastique au maximum.", img: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Ring Row lourd", reps: "6-8 reps", series: 4, type: "reps", move: "pull", desc: "Tirage horizontal aux anneaux, 3s montée / 3s descente.", img: "https://images.unsplash.com/photo-1605296867304-46d5465a25f1?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Développé élastique", reps: "8 reps", series: 4, type: "reps", move: "push", desc: "Élastique dans le dos. Poussez vers l'avant.", img: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Dips anneaux", reps: "4-6 reps", series: 3, type: "reps", move: "push", desc: "Contrôlez la stabilité puis repoussez fort.", img: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Bloc Force", name: "Curl + iso", reps: "8 + 10s iso", series: 3, type: "reps", move: "iso", desc: "8 reps puis maintenez bloqué à 90° pendant 10s.", img: "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&auto=format&fit=crop&q=60" },
-        { phase: "Finisher", name: "Ring Plank to Pike", reps: "8-10 reps", series: 3, type: "reps", move: "push", desc: "En planche, contractez les abdos pour monter le bassin.", img: "https://images.unsplash.com/photo-1566241477600-ac026ad43874?w=500&auto=format&fit=crop&q=60" }
+        { phase: "Échauffement", name: "Band Pull-Apart", reps: "20 reps", series: 1, type: "reps", move: "lat", desc: "Bras tendus, écartez l'élastique au maximum.", img: "https://images.unsp[...]
+        { phase: "Bloc Force", name: "Ring Row lourd", reps: "6-8 reps", series: 4, type: "reps", move: "pull", desc: "Tirage horizontal aux anneaux, 3s montée / 3s descente.", img: "https://ima[...]
+        { phase: "Bloc Force", name: "Développé élastique", reps: "8 reps", series: 4, type: "reps", move: "push", desc: "Élastique dans le dos. Poussez vers l'avant.", img: "https://images.u[...]
+        { phase: "Bloc Force", name: "Dips anneaux", reps: "4-6 reps", series: 3, type: "reps", move: "push", desc: "Contrôlez la stabilité puis repoussez fort.", img: "https://images.unsplash.[...]
+        { phase: "Bloc Force", name: "Curl + iso", reps: "8 + 10s iso", series: 3, type: "reps", move: "iso", desc: "8 reps puis maintenez bloqué à 90° pendant 10s.", img: "https://images.unsp[...]
+        { phase: "Finisher", name: "Ring Plank to Pike", reps: "8-10 reps", series: 3, type: "reps", move: "push", desc: "En planche, contractez les abdos pour monter le bassin.", img: "https://i[...]
     ]
 };
 
@@ -307,7 +149,7 @@ function prepareExercise() {
 }
 
 function handleAction() {
-    const ex = currentWorkout[exerciseIdx];
+    const ex = currentWorkout[exerciceIdx];
     if (currentState === "READY") {
         if (ex.type === "time") startTimer(ex.duration, "WORKING");
         else startRest();
